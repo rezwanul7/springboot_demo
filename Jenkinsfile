@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn package'
+                echo 'Building..'
+                sh './mvnw clean install -DskipTests'
             }
         }
 
@@ -13,6 +14,7 @@ pipeline {
                 echo 'Testing..'
             }
         }
+
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
